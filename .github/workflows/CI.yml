@@ -48,3 +48,4 @@ jobs:
 
     - name: Build Angular app
       run: ng build
+
