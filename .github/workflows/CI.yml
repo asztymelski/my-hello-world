@@ -49,4 +49,4 @@ jobs:
     - name: Build Angular app
       run: ng build
     - name: Test Angular app
-      run: npm test -- --configuration=ci
+      run: npm test
