@@ -48,4 +48,5 @@ jobs:
 
     - name: Build Angular app
       run: ng build
-
+    - name: Test Angular app
+      run: ng test
