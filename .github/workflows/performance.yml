@@ -15,4 +15,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Performance report
-          path: "$(pwd)/sitespeed.io/sitespeed-result/salmon-meadow-0fe025e03.3.azurestaticapps.net/*"
+          path: "sitespeed-result/salmon-meadow-0fe025e03.3.azurestaticapps.net/*"
