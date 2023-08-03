@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "**" ]
   pull_request:
     branches: [ "master" ]
 
@@ -23,21 +23,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        
-        # Sprawdzic czy to potrzebne w ogole jezeli mamy nodejs@v3  cache: npm
-    - name: Cache node modules
-      id: cache-nodemodules
-      uses: actions/cache@v3
-      env:
-        cache-name: cache-node-modules
-      with:
-        # caching node_modules
-        path: node_modules
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
           
     - name: Install Dependencies
       if: steps.cache-npm.outputs.cache-hit != 'true'
@@ -49,4 +34,4 @@ jobs:
     - name: Build Angular app
       run: ng build
     - name: Test Angular app
-      run: npm test
+      run: xvfb-run -a npm test -- --watch=false --code-coverage
